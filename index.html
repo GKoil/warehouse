@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script async src="js/main.js"></script>
+  <title>Warehouse system</title>
+</head>
+<body>
+  <div id="app">
+    <div class="stats">
+      <h3 class="status__title">{{"Текущих сотрудников: " + employees.length}}</h3>
+      <employee @delete_employee="delete_employee(index)" :data="data" v-for="(data,index) in employees" :key="index"></employee>
+      <div class="add__employee">
+        <div>
+          <input type="text" v-model="new_employee.title" placeholder="Добавить сотрудника">
+          <input type="text" v-model="new_employee.description" placeholder="Должность">
+        </div>
+        <button @click="add_employee()" class="add__employee-button">➕</button>
+      </div>
+    </div>
+
+
+  </div>
+</body>
+</html>
