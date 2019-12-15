@@ -35,6 +35,17 @@
         <button @click="add_product()" class="add__employee-button">➕</button>
       </div>
     </div>
+    <div class="stats">
+      <h3 class="status__title">Продукты для закупки</h3>
+      <productbuy @delete_product="delete_productbuy(index)" :data="data" v-for="(data, index) in productsbuy" :key="index"></productbuy>
+      <div class="add__product">
+        <div>
+          <input type="text" v-model="new_productbuy.title" placeholder="Введите продукт">
+          <input type="text" v-model="new_productbuy.description" placeholder="Введите свойства">
+        </div>
+        <button @click="add_productbuy()" class="add__employee-button">➕</button>
+      </div>
+    </div>
 
   </div>
 </body>

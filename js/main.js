@@ -34,6 +34,24 @@ Vue.component('product', {
     `
 });
 
+Vue.component('productbuy', {
+    props: ['data'],
+    methods: {
+        delete_productbuy() {
+            this.$emit('delete_productbuy');
+        }
+    },
+    template: `
+    <div class="productbuy">
+      <div>
+        <input type="text" v-model="data.title" class="product__title">
+        <span class="product__description">{{"Количество " + data.description}}</span>
+      </div>
+      <button @click="delete_productbuy()" class="product__delete">❌</button>
+    </div>
+    `
+});
+
 const vue = new Vue ({
     el: '#app',
     data: {
@@ -42,6 +60,10 @@ const vue = new Vue ({
             description: ''
         },
         new_product: {
+            title: '',
+            description: ''
+        },
+        new_productbuy: {
             title: '',
             description: ''
         },
@@ -64,6 +86,12 @@ const vue = new Vue ({
                 title: 'Сыр',
                 description: '1 кг.'
             }
+        ],
+        productsbuy: [
+            {
+                title: 'Огурцы',
+                description: '10'
+            }
         ]
     },
     methods: {
@@ -72,6 +100,9 @@ const vue = new Vue ({
         },
         delete_product(id) {
             this.products.splice(id,1);
+        },
+        delete_productbuy(id) {
+            this.productsbuy.splice(id,1);
         },
         add_employee() {
             if(this.new_employee.title != '' && this.new_employee.description != ''){
@@ -94,6 +125,19 @@ const vue = new Vue ({
                 });
                 this.new_product.title='';
                 this.new_product.description='';
+            }
+            else {
+                alert("Введите количество продукта");
+            }
+        },
+        add_productbuy() {
+            if(this.new_productbuy.title != '' && this.new_productbuy.description != ''){
+                this.productsbuy.push({
+                    title: this.new_productbuy.title,
+                    description: this.new_productbuy.description
+                });
+                this.new_productbuy.title='';
+                this.new_productbuy.description='';
             }
             else {
                 alert("Введите количество продукта");
