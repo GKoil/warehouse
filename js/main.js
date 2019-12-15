@@ -16,10 +16,32 @@ Vue.component('employee',{
     `
 });
 
+Vue.component('product', {
+    props: ['data'],
+    methods: {
+        delete_product() {
+            this.$emit('delete_product');
+        }
+    },
+    template: `
+    <div class="product">
+      <div>
+        <input type="text" v-model="data.title" class="product__title">
+        <span class="product__description">{{"Количество " + data.description}}</span>
+      </div>
+      <button @click="delete_product()" class="product__delete">❌</button>
+    </div>
+    `
+});
+
 const vue = new Vue ({
     el: '#app',
     data: {
         new_employee: {
+            title: '',
+            description: ''
+        },
+        new_product: {
             title: '',
             description: ''
         },
@@ -32,11 +54,24 @@ const vue = new Vue ({
                 title: 'Сидоров Сидор Сидорович',
                 description: 'отдела продаж'
             }
+        ],
+        products: [
+            {
+                title: 'Молоко',
+                description: '2 литра'
+            },
+            {
+                title: 'Сыр',
+                description: '1 кг.'
+            }
         ]
     },
     methods: {
         delete_employee(id) {
             this.employees.splice(id,1);
+        },
+        delete_product(id) {
+            this.products.splice(id,1);
         },
         add_employee() {
             if(this.new_employee.title != '' && this.new_employee.description != ''){
@@ -49,6 +84,19 @@ const vue = new Vue ({
             }
             else {
                 alert("Введите должность сотрудинка");
+            }
+        },
+        add_product() {
+            if(this.new_product.title != '' && this.new_product.description != ''){
+                this.products.push({
+                    title: this.new_product.title,
+                    description: this.new_product.description
+                });
+                this.new_product.title='';
+                this.new_product.description='';
+            }
+            else {
+                alert("Введите количество продукта");
             }
         }
     }

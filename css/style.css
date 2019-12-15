@@ -3,7 +3,8 @@
     margin: 0 auto;
 }
 
-.employee {
+.employee,
+.product {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -12,24 +13,29 @@
     padding-bottom: 10px;
 }
 
-.employee div {
+.employee div,
+.product div {
     width: 174px;
 }
 
-.employee button {
+.employee button,
+.product button {
     border: none;
     background-color: white;
 }
 
-.employee__title {
+.employee__title,
+.product__title {
     border: none;
 }
 
-.employee__description {
+.employee__description,
+.product__description {
     font-size: 15px;
 }
 
-.add__employee {
+.add__employee,
+.add__product {
     display: flex;
     margin-top: 20px;
 }

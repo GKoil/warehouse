@@ -24,6 +24,17 @@
       </div>
     </div>
 
+    <div class="stats">
+      <h3 class="status__title">Продукты на складе</h3>
+      <product @delete_product="delete_product(index)" :data="data" v-for="(data, index) in products" :key="index"></product>
+      <div class="add__product">
+        <div>
+          <input type="text" v-model="new_product.title" placeholder="Введите продукт">
+          <input type="text" v-model="new_product.description" placeholder="Введите свойства">
+        </div>
+        <button @click="add_product()" class="add__employee-button">➕</button>
+      </div>
+    </div>
 
   </div>
 </body>
