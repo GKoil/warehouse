@@ -1,6 +1,21 @@
 .stats {
     width: 230px;
     margin: 0 auto;
+    background-color: #7c99a9;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px grey;
+}
+
+.stats:hover {
+    box-shadow: 0 0 30px grey;
+}
+
+.container {
+    width: 660px;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 50px;
 }
 
 .employee,
@@ -21,14 +36,25 @@
 }
 
 .employee button,
-.product button {
+.product button,
+.productbuy button {
     border: none;
-    background-color: white;
+    background-color: #7c99a9;
+}
+
+.employee button:hover,
+.product button:hover,
+.productbuy button:hover {
+    background-color: #ff3e3e;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .employee__title,
 .product__title {
     border: none;
+    background-color: #7c99a9;
 }
 
 .employee__description,
@@ -40,4 +66,18 @@
 .add__product {
     display: flex;
     margin-top: 20px;
+}
+
+.add__employee button,
+.add__product button {
+    border: 1px solid #7c99a9;
+}
+
+.add__employee button:hover,
+.add__product button:hover {
+    border-radius: 5px;
+    background-color: #3dc786;
+    border: 1px solid #3dc786;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
